@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,0BAA0B;EACxB,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,UAAU;EACrB,eAAe,EAAE,aAAa;EAC9B,WAAW,EAAE,MAAM;EAKjB,iEAAgB;IACd,SAAS,EAAE,IAAI;IACf,QAAQ,EAAE,MAAM;EAGlB,wEAAsB;IACpB,SAAS,EAAE,IAAI",
+"sources": ["../scss/TickerResponse.scss"],
+"names": [],
+"file": "TickerResponse.css"
+}

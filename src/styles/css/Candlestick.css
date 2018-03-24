@@ -1,0 +1,24 @@
+.candlestick-container {
+  background: #222; }
+
+path.candle {
+  stroke: #FFF; }
+path.candle.body {
+  stroke-width: 0; }
+path.candle.up {
+  fill: gold;
+  stroke: gold; }
+path.candle.down {
+  fill: #87CEEB;
+  stroke: #87CEEB; }
+path.domain {
+  stroke: white; }
+
+g.tick line {
+  stroke: white;
+  stroke-width: 2; }
+g.tick text {
+  fill: white;
+  font-size: 20; }
+
+/*# sourceMappingURL=Candlestick.css.map */

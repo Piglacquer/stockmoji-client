@@ -1,0 +1,12 @@
+.response-emojis-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center; }
+  .response-emojis-container .response-emojis-score .score-response {
+    font-size: 6rem;
+    overflow: hidden; }
+  .response-emojis-container .response-emojis-score .score-response-number {
+    font-size: 1rem; }
+
+/*# sourceMappingURL=TickerResponse.css.map */

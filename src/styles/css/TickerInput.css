@@ -1,0 +1,21 @@
+.ticker-input-container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-around;
+  width: 100vw; }
+  .ticker-input-container .input-and-response {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-between; }
+    .ticker-input-container .input-and-response .input-ticker {
+      border-radius: 15px;
+      font-size: 3rem;
+      width: 200px;
+      text-align: center; }
+    .ticker-input-container .input-and-response .submit-ticker {
+      border-style: none;
+      font-size: 3rem; }
+
+/*# sourceMappingURL=TickerInput.css.map */

@@ -1,0 +1,14 @@
+.App-header {
+  background-color: #89edff;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100px;
+  width: 100vw;
+  padding: 20px;
+  color: white; }
+  .App-header .header-logo {
+    font-family: 'Rammetto One', cursive; }
+
+/*# sourceMappingURL=Header.css.map */

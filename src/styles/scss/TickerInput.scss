@@ -1,0 +1,26 @@
+.ticker-input-container{
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-around;
+  width: 100vw;
+
+  .input-and-response{
+    display: flex;
+  	flex-flow: column nowrap;
+  	align-items: center;
+  	justify-content: space-between;
+
+    .input-ticker{
+      border-radius: 15px;
+      font-size: 3rem;
+      width: 200px;
+      text-align: center;
+    }
+
+    .submit-ticker{
+      border-style: none;
+      font-size: 3rem;
+    }
+  }
+}

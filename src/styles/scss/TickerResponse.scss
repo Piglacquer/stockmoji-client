@@ -1,0 +1,19 @@
+.response-emojis-container{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+  .response-emojis-score{
+
+
+    .score-response {
+      font-size: 6rem;
+      overflow: hidden;
+    }
+
+    .score-response-number{
+      font-size: 1rem;
+    }
+  }
+}
