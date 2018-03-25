@@ -5,10 +5,11 @@
   align-items: center;
   justify-content: flex-start;
   height: 100px;
-  width: 100vw;
+  width: 100%;
   padding: 20px;
   color: white; }
   .App-header .header-logo {
-    font-family: 'Rammetto One', cursive; }
+    font-family: 'Rammetto One', cursive;
+    margin: 0 30px 0 30px; }
 
 /*# sourceMappingURL=Header.css.map */

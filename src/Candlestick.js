@@ -4,16 +4,19 @@ import techan from 'techan';
 import './styles/css/candlestick.css';
 
 class Candlestick extends Component {
-    state = {
-        csvData: null
-    }
+  constructor(props){
+    super(props)
+    this.state={
 
-    componentWillReceiveProps() {
+    }
+  }
+
+    componentWillMount() {
       this.getStockPriceData(this.props.ticker)
     }
 
-
     getStockPriceData(ticker) {
+      console.log(this.props.ticker)
       fetch('https://api.intrinio.com/prices?ticker=' + ticker, {
           headers: new Headers({
               Authorization: `Basic ${new Buffer('dcfac65d3703237d8ccf5698f693e5e9:1c58f8fcdd7c0f63f6e98f649e5365de').toString('base64')}`
@@ -21,10 +24,9 @@ class Candlestick extends Component {
         })
         .then(response => response.json())
         .then((response) => {
-            const csvData = this.convertToCSV(response.data);
-
-            this.setState({ csvData });
-        });
+          console.log(response, 'ajax being called multiple times?')
+          this.convertToCSV(response.data)
+      })
     }
 
     convertToCSV(objArray) {
@@ -46,10 +48,13 @@ class Candlestick extends Component {
             csvString += line + '\r\n';
         }
 
-        return csvString;
+        this.setState({
+          csvString: csvString
+        })
     }
 
     renderCandlestick(csvData) {
+      console.log(this.state, 'renderCandle state')
         const container = this.refs.svgContainer;
 
         const margin = {top: 20, right: 20, bottom: 30, left: 50};
@@ -147,7 +152,7 @@ class Candlestick extends Component {
 
         return (
             <div className="candlestick-container">
-              <div ref="svgContainer">{this.state.csvData ? this.renderCandlestick(this.state.csvData) : ''}
+              <div ref="svgContainer">{this.state.csvString ? this.renderCandlestick(this.state.csvString) : ''}
               </div>
             </div>
         )

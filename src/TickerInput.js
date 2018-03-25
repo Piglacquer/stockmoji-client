@@ -10,7 +10,6 @@ class TickerInput extends Component {
 		this.state = {
 			sentimentScore: false,
 			ticker: null,
-			tickerToPass: null,
 			sentimentDataToSend: {
 				content: '',
 				type: 'PLAIN_TEXT'
@@ -48,7 +47,8 @@ class TickerInput extends Component {
 	submitTicker = e => {
 		e.preventDefault()
 		var ticker = this.state.ticker
-		this.setState({tickerToPass: ticker})
+		this.setState({tickerToPass:ticker})
+		console.log(this.state.tickerToPass, 'tickertopass')
 		this.getBasicStockData(this.state.ticker)
 		console.log("Basic " + new Buffer('dcfac65d3703237d8ccf5698f693e5e9' + ':' + '1c58f8fcdd7c0f63f6e98f649e5365de').toString('base64'))
 		fetch('https://stockpickeremoji.herokuapp.com/' + this.state.ticker)
@@ -58,13 +58,13 @@ class TickerInput extends Component {
 				this.sentimentAnalysis(this.state.sentimentDataToSend)
 			})
 		this.setState({ ticker: '' })
+		console.log(this.state.tickerToPass, 'tickertopass')
 	}
 
 	formatInput = e => {
 		var upperCased = e.target.value.toUpperCase()
 		this.setState({
-			ticker: upperCased,
-			tickerToPass: upperCased
+			ticker: upperCased
 		})
 	}
 
