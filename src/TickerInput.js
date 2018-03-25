@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './styles/css/TickerInput.css'
 import TickerResponse from './TickerResponse.js'
 import TickerResponseBasicInfo from './TickerResponseBasicInfo.js'
-
+import Candlestick from './Candlestick.js'
 
 class TickerInput extends Component {
 	constructor(props) {
@@ -10,11 +10,11 @@ class TickerInput extends Component {
 		this.state = {
 			sentimentScore: false,
 			ticker: null,
+			tickerToPass: null,
 			sentimentDataToSend: {
 				content: '',
 				type: 'PLAIN_TEXT'
 			},
-			stockPriceData: null,
 			basicStockData: null
 		}
 	}
@@ -40,17 +40,17 @@ class TickerInput extends Component {
 		})
 		.then(response => response.json())
 		.then(response => this.setState({
-			stockPriceData: response
+			stockPriceData: response.data
 			})
 		)
 	}
 
 	submitTicker = e => {
 		e.preventDefault()
-		console.log(this.state.ticker)
+		var ticker = this.state.ticker
+		this.setState({tickerToPass: ticker})
 		this.getBasicStockData(this.state.ticker)
 		console.log("Basic " + new Buffer('dcfac65d3703237d8ccf5698f693e5e9' + ':' + '1c58f8fcdd7c0f63f6e98f649e5365de').toString('base64'))
-		this.getStockPriceData(this.state.ticker)
 		fetch('https://stockpickeremoji.herokuapp.com/' + this.state.ticker)
 			.then(resp => resp.json())
 			.then(resp => this.prepareHeadlineData(resp))
@@ -58,6 +58,14 @@ class TickerInput extends Component {
 				this.sentimentAnalysis(this.state.sentimentDataToSend)
 			})
 		this.setState({ ticker: '' })
+	}
+
+	formatInput = e => {
+		var upperCased = e.target.value.toUpperCase()
+		this.setState({
+			ticker: upperCased,
+			tickerToPass: upperCased
+		})
 	}
 
 	prepareHeadlineData = twitterResp => {
@@ -93,13 +101,6 @@ class TickerInput extends Component {
 			})
 		}
 
-	formatInput = e => {
-		var upperCased = e.target.value.toUpperCase()
-		this.setState({
-			ticker: upperCased
-		})
-	}
-
 	handleEmptyResponse = () => {
 		if (this.state.sentimentScore.magnitude === 0) {
 			alert('😓')
@@ -131,6 +132,7 @@ class TickerInput extends Component {
 
 					<div>{this.state.basicStockData ? <TickerResponseBasicInfo basicStockData={this.state.basicStockData} /> : ''}</div>
 
+					<div>{this.state.basicStockData ? <Candlestick ticker={this.state.tickerToPass} /> : 'chart'}</div>
 				</div>
 			</div>
 		)
@@ -138,6 +140,3 @@ class TickerInput extends Component {
 }
 
 export default TickerInput
-
-{/*<div>{this.state.stockPriceData ? <Candlestick stockPriceData = {this.state.stockPriceData} / > : ''}</div>
-*/}

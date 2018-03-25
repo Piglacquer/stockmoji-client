@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import './styles/css/App.css'
 import TickerInput from './TickerInput.js'
 import Header from './Header.js'
-import Candlestick from './Candlestick'
 
 class App extends Component {
 	render() {
@@ -10,7 +9,6 @@ class App extends Component {
 			<div className="App">
 				<Header />
 				<TickerInput />
-				<Candlestick />
 			</div>
 		)
 	}

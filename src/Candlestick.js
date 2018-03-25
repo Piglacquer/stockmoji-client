@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
 import techan from 'techan';
-import './styles/css/Candlestick.css';
+import './styles/css/candlestick.css';
 
 class Candlestick extends Component {
     state = {
-        csvData: ''
+        csvData: null
     }
 
-    componentWillMount() {
-        this.getStockPriceData();
+    componentWillReceiveProps() {
+      this.getStockPriceData(this.props.ticker)
     }
 
-    async getStockPriceData() {
 
-        fetch('https://api.intrinio.com/prices?ticker=AAPL', {
-            headers: new Headers({
-                Authorization: `Basic ${new Buffer('dcfac65d3703237d8ccf5698f693e5e9:1c58f8fcdd7c0f63f6e98f649e5365de').toString('base64')}`
-            })
+    getStockPriceData(ticker) {
+      fetch('https://api.intrinio.com/prices?ticker=' + ticker, {
+          headers: new Headers({
+              Authorization: `Basic ${new Buffer('dcfac65d3703237d8ccf5698f693e5e9:1c58f8fcdd7c0f63f6e98f649e5365de').toString('base64')}`
+          })
         })
         .then(response => response.json())
         .then((response) => {
@@ -147,12 +147,10 @@ class Candlestick extends Component {
 
         return (
             <div className="candlestick-container">
-                <div ref="svgContainer">
-                    {this.renderCandlestick(this.state.csvData)}
-                </div>
+              <div ref="svgContainer">{this.state.csvData ? this.renderCandlestick(this.state.csvData) : ''}
+              </div>
             </div>
         )
-
     }
 }
 
