@@ -14,7 +14,7 @@ class App extends Component {
 		}
 	}
 
-	switchLandingAndApp= () =>{
+	switchLandingAndApp = () =>{
 		console.log('hey')
 		this.setState({
 			showLanding: false,
