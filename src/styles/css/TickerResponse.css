@@ -2,11 +2,34 @@
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  align-items: center; }
-  .response-emojis-container .response-emojis-score .score-response {
-    font-size: 6rem;
-    overflow: hidden; }
-  .response-emojis-container .response-emojis-score .score-response-number {
-    font-size: 1rem; }
+  align-items: center;
+  width: 30vw;
+  height: 50vh; }
+  .response-emojis-container .score-response-emoji {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    height: auto;
+    background: #545350;
+    border-radius: 15px;
+    padding: 10px;
+    border-style: solid;
+    border-top: 3px;
+    border-right: 3px;
+    border-color: black; }
+    .response-emojis-container .score-response-emoji .score-emoji {
+      text-align: center;
+      font-size: 6rem;
+      overflow: hidden;
+      height: 13vh;
+      width: 10vw; }
+    .response-emojis-container .score-response-emoji .score-response {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center; }
+      .response-emojis-container .score-response-emoji .score-response .score-response-number {
+        font-size: 1rem; }
+      .response-emojis-container .score-response-emoji .score-response .score-response-title {
+        font-family: 'Rammetto One', cursive; }
 
 /*# sourceMappingURL=TickerResponse.css.map */

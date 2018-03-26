@@ -1,26 +1,53 @@
-.ticker-input-container{
+.input-response-container{
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
 
-  .input-and-response{
-    display: flex;
-  	flex-flow: column nowrap;
-  	align-items: center;
-  	justify-content: space-between;
+  .input-form-container{
+    margin: 15px;
 
-    .input-ticker{
-      border-radius: 15px;
-      font-size: 3rem;
-      width: 200px;
-      text-align: center;
+    .input-form{
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      width: 25vw;
+      height: 10vh;
+
+      .input-ticker{
+        border-radius: 15px;
+        font-size: 3rem;
+        width: 200px;
+        text-align: center;
+      }
+
+      .submit-ticker{
+        border-style: none;
+        font-size: 3rem;
+        font-family: 'Rammetto One', cursive;
+        background: #14CCB6;
+        border-radius: 15px;
+        height: 100%;
+      }
+    }
+  }
+
+  .container-of-all{
+
+
+    .score-and-data-container{
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-around;
+      align-items: center;
+      width: 90%;
+      height: 100%;
+      // overflow: hidden;
     }
 
-    .submit-ticker{
-      border-style: none;
-      font-size: 3rem;
+    .data-chart {
+
     }
   }
 }

@@ -1,0 +1,41 @@
+.stock-info-container {
+  background: #545350;
+  margin: 15px;
+  border-radius: 15px;
+  height: 50vh;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border-style: solid;
+  border-top: 3px;
+  border-right: 3px;
+  border-color: black; }
+  .stock-info-container .stock-name {
+    background: black;
+    color: white;
+    font-family: 'Rammetto One', cursive;
+    width: 100%;
+    padding-left: 10px; }
+  .stock-info-container .stock-basic-info-container {
+    display: flex;
+    flex-flow: column nowrap;
+    padding-left: 10px;
+    padding-right: 10px; }
+    .stock-info-container .stock-basic-info-container .stock-info-rows {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: space-around;
+      height: 15vh; }
+      .stock-info-container .stock-basic-info-container .stock-info-rows .stock-info {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center; }
+        .stock-info-container .stock-basic-info-container .stock-info-rows .stock-info .stock-info-title {
+          font-family: 'Rammetto One', cursive; }
+        .stock-info-container .stock-basic-info-container .stock-info-rows .stock-info .stock-info-desc {
+          padding-left: 5px;
+          text-decoration: none; }
+      .stock-info-container .stock-basic-info-container .stock-info-rows .stock-description-container {
+        width: 90%; }
+
+/*# sourceMappingURL=TickerResponseBasicInfo.css.map */

@@ -1,21 +1,35 @@
-.ticker-input-container {
+.input-response-container {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%; }
-  .ticker-input-container .input-and-response {
+  .input-response-container .input-form-container {
+    margin: 15px; }
+    .input-response-container .input-form-container .input-form {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      width: 25vw;
+      height: 10vh; }
+      .input-response-container .input-form-container .input-form .input-ticker {
+        border-radius: 15px;
+        font-size: 3rem;
+        width: 200px;
+        text-align: center; }
+      .input-response-container .input-form-container .input-form .submit-ticker {
+        border-style: none;
+        font-size: 3rem;
+        font-family: 'Rammetto One', cursive;
+        background: #14CCB6;
+        border-radius: 15px;
+        height: 100%; }
+  .input-response-container .container-of-all .score-and-data-container {
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: row nowrap;
+    justify-content: space-around;
     align-items: center;
-    justify-content: space-between; }
-    .ticker-input-container .input-and-response .input-ticker {
-      border-radius: 15px;
-      font-size: 3rem;
-      width: 200px;
-      text-align: center; }
-    .ticker-input-container .input-and-response .submit-ticker {
-      border-style: none;
-      font-size: 3rem; }
+    width: 90%;
+    height: 100%; }
 
 /*# sourceMappingURL=TickerInput.css.map */

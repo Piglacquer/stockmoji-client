@@ -12,7 +12,7 @@ class Candlestick extends Component {
   }
 
     componentWillMount() {
-      this.getStockPriceData(this.props.ticker)
+      this.getStockPriceData(this.props.tickerToPass)
     }
 
     getStockPriceData(ticker) {
@@ -30,6 +30,7 @@ class Candlestick extends Component {
     }
 
     convertToCSV(objArray) {
+      console.log(objArray, 'csv')
         const array = typeof objArray !== 'object' ? JSON.parse(objArray) : objArray;
         let csvString = '';
         const fields = Object.keys(objArray[0]);
@@ -47,10 +48,12 @@ class Candlestick extends Component {
             }
             csvString += line + '\r\n';
         }
-
+        console.log(this.state,'state before csv set')
         this.setState({
           csvString: csvString
         })
+        console.log(this.state, 'state after csv set')
+        this.renderCandlestick(this.state.csvString)
     }
 
     renderCandlestick(csvData) {
@@ -150,12 +153,12 @@ class Candlestick extends Component {
 
     render() {
 
-        return (
-            <div className="candlestick-container">
-              <div ref="svgContainer">{this.state.csvString ? this.renderCandlestick(this.state.csvString) : ''}
-              </div>
+      return (
+          <div className="candlestick-container">
+            <div ref="svgContainer">
             </div>
-        )
+          </div>
+      )
     }
 }
 

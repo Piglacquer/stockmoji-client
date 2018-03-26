@@ -14,7 +14,8 @@ class TickerInput extends Component {
 				content: '',
 				type: 'PLAIN_TEXT'
 			},
-			basicStockData: null
+			basicStockData: null,
+			tickerToPass: null
 		}
 	}
 
@@ -27,7 +28,6 @@ class TickerInput extends Component {
 		.then(response => response.json())
 		.then(response => {
 			this.setState({basicStockData: response})
-			console.log(this.state.basicStockData)
 		})
 	}
 
@@ -46,11 +46,14 @@ class TickerInput extends Component {
 
 	submitTicker = e => {
 		e.preventDefault()
+		this.setState({tickerToPass: null})
+		console.log(this.state.tickerToPass, 'tickertoPass')
 		var ticker = this.state.ticker
-		this.setState({tickerToPass:ticker})
-		console.log(this.state.tickerToPass, 'tickertopass')
+		console.log(ticker, 'ticker')
+		this.setState({tickerToPass : ticker})
+		console.log(this.state.tickerToPass, 'after set state')
 		this.getBasicStockData(this.state.ticker)
-		console.log("Basic " + new Buffer('dcfac65d3703237d8ccf5698f693e5e9' + ':' + '1c58f8fcdd7c0f63f6e98f649e5365de').toString('base64'))
+
 		fetch('https://stockpickeremoji.herokuapp.com/' + this.state.ticker)
 			.then(resp => resp.json())
 			.then(resp => this.prepareHeadlineData(resp))
@@ -58,7 +61,7 @@ class TickerInput extends Component {
 				this.sentimentAnalysis(this.state.sentimentDataToSend)
 			})
 		this.setState({ ticker: '' })
-		console.log(this.state.tickerToPass, 'tickertopass')
+		console.log(this.state.tickerToPass, 'tickertopass end of submit')
 	}
 
 	formatInput = e => {
@@ -69,13 +72,11 @@ class TickerInput extends Component {
 	}
 
 	prepareHeadlineData = twitterResp => {
-		console.log(twitterResp.tweets.statuses)
 		var newTitles = twitterResp.tweets.statuses
 			.map(story => {
 				return story.text
 			})
 			.join(' ')
-		console.log(newTitles)
 		this.setState({
 			sentimentDataToSend: {
 				content: newTitles,
@@ -97,7 +98,6 @@ class TickerInput extends Component {
 				this.setState({
 					sentimentScore: resp.message
 				})
-				console.log(this.state.sentimentScore)
 			})
 		}
 
@@ -109,9 +109,9 @@ class TickerInput extends Component {
 
 	render() {
 		return (
-			<div className="ticker-input-container">
-				<div className='input-and-response'>
-					<form type="submit" onSubmit={this.submitTicker}>
+			<div className="input-response-container">
+				<div className='input-form-container'>
+					<form className='input-form' type="submit" onSubmit={this.submitTicker}>
 						<input
 							className="input-ticker"
 							placeholder="AMZN"
@@ -123,17 +123,23 @@ class TickerInput extends Component {
 								this.formatInput(event)
 							}}
 						/>
-						<input className="submit-ticker" type="submit" value="🤓" />
+						<input className="submit-ticker" type="submit" value="G🤓!" />
 					</form>
-
-					<div>
-						{this.state.sentimentScore ? <TickerResponse sentimentScore={this.state.sentimentScore} /> : ''}
-					</div>
-
-					<div>{this.state.basicStockData ? <TickerResponseBasicInfo basicStockData={this.state.basicStockData} /> : ''}</div>
-
-					<div>{this.state.basicStockData ? <Candlestick ticker={this.state.tickerToPass} /> : 'chart'}</div>
 				</div>
+				<div className='container-of-all'>
+					<div className='score-and-data-container'>
+
+						{this.state.sentimentScore ? <TickerResponse sentimentScore={this.state.sentimentScore} /> : ''}
+
+
+						{this.state.sentimentScore ? <TickerResponseBasicInfo basicStockData={this.state.basicStockData} /> : ''}
+
+					</div>
+					<div className='data-chart'>
+						{this.state.sentimentScore ? <Candlestick tickerToPass={this.state.tickerToPass} /> : ''}
+					</div>
+				</div>
+
 			</div>
 		)
 	}

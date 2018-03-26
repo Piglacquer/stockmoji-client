@@ -35,16 +35,16 @@ class TickerResponse extends Component {
         return 'emoji'
         break
       case '-0.20':
-        return 'emoji'
+        return '😡'
         break
       case '-0.10':
         return '🐈'
         break
       case '0.00':
-        return '😯'
+        return '😶'
         break
       case '0.01':
-        return '😶'
+        return '😯'
         break
       case '0.02':
         return '🙃'
@@ -271,13 +271,19 @@ class TickerResponse extends Component {
 	render() {
 		return (
 			<div className='response-emojis-container'>
-        <div className='response-emojis-score'>
-    			<h2 className='score-response'>{this.renderSentimentSwitch(this.props.sentimentScore.score)}</h2>
-          <p className='score-response-number'>AVG SENTIMENT:{this.toFixedDecimal(this.props.sentimentScore.score)}</p>
+        <div className='score-response-emoji'>
+    			<h2 className='score-emoji'>{this.renderSentimentSwitch(this.props.sentimentScore.score)}</h2>
+          <div className='score-response'>
+            <p className='score-response-number'>{this.toFixedDecimal(this.props.sentimentScore.score)}</p>
+            <h3 className='score-response-title'>SENTIMENT</h3>
+          </div>
         </div>
-        <div className='response-emojis-score'>
-          <h2 className='score-response'>{this.renderMagnitudeSwitch(this.props.sentimentScore.magnitude)}</h2>
-          <p className='score-response-number'>MAGNITUDE:{this.toFixedDecimal(this.props.sentimentScore.magnitude)}</p>
+        <div className='score-response-emoji'>
+          <h2 className='score-emoji'>{this.renderMagnitudeSwitch(this.props.sentimentScore.magnitude)}</h2>
+          <div className='score-response'>
+            <p className='score-response-number'>{this.toFixedDecimal(this.props.sentimentScore.magnitude)}</p>
+            <h3 className='score-response-title'>MAGNITUDE</h3>
+          </div>
         </div>
 			</div>
 		)
