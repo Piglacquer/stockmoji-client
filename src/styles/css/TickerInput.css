@@ -24,12 +24,26 @@
         background: #14CCB6;
         border-radius: 15px;
         height: 100%; }
-  .input-response-container .container-of-all .score-and-data-container {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
-    align-items: center;
-    width: 90%;
-    height: 100%; }
+  .input-response-container .container-of-all {
+    margin-left: 10vw; }
+    .input-response-container .container-of-all .score-and-data-container {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-around;
+      align-items: center;
+      width: 90%;
+      height: 100%; }
+    .input-response-container .container-of-all .button-green {
+      height: 50px;
+      width: 100px;
+      background: #14CCB6;
+      border-radius: 15px;
+      border-style: solid;
+      border-top: 3px;
+      border-right: 3px;
+      border-color: black;
+      font-family: 'Rammetto One', cursive;
+      font-size: 1.5rem;
+      margin-left: 33vw; }
 
 /*# sourceMappingURL=TickerInput.css.map */

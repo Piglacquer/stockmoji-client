@@ -34,7 +34,7 @@
   }
 
   .container-of-all{
-
+    margin-left: 10vw;
 
     .score-and-data-container{
       display: flex;
@@ -48,6 +48,20 @@
 
     .data-chart {
 
+    }
+
+    .button-green{
+      height: 50px;
+      width: 100px;
+      background: #14CCB6;
+      border-radius: 15px;
+      border-style: solid;
+      border-top: 3px;
+      border-right: 3px;
+      border-color: black;
+      font-family: 'Rammetto One', cursive;
+      font-size: 1.5rem;
+      margin-left: 33vw;
     }
   }
 }

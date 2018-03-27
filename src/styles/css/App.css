@@ -5,6 +5,7 @@
   background-color: #222;
   height: 100vh;
   overflow-y: auto;
+  overflow-x: hidden;
   width: 100%; }
 
 /*# sourceMappingURL=App.css.map */

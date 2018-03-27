@@ -3,6 +3,7 @@ import './styles/css/TickerInput.css'
 import TickerResponse from './TickerResponse.js'
 import TickerResponseBasicInfo from './TickerResponseBasicInfo.js'
 import Candlestick from './Candlestick.js'
+import StockCard from './StockCard.js'
 
 class TickerInput extends Component {
 	constructor(props) {
@@ -14,8 +15,10 @@ class TickerInput extends Component {
 				content: '',
 				type: 'PLAIN_TEXT'
 			},
-			basicStockData: null,
-			tickerToPass: null
+			basicStockData: false,
+			tickerToPass: null,
+			stockCardShow: false,
+			showAll: false
 		}
 	}
 
@@ -60,7 +63,6 @@ class TickerInput extends Component {
 			.then(() => {
 				this.sentimentAnalysis(this.state.sentimentDataToSend)
 			})
-		this.setState({ ticker: '' })
 		console.log(this.state.tickerToPass, 'tickertopass end of submit')
 	}
 
@@ -107,6 +109,15 @@ class TickerInput extends Component {
 		}
 	}
 
+	killScreenAndRenderSavedCard = () => {
+		console.log('killscreen')
+		this.setState({
+			basicStockData: false,
+			stockCardShow: true
+		})
+		return <StockCard />
+	}
+
 	render() {
 		return (
 			<div className="input-response-container">
@@ -136,10 +147,14 @@ class TickerInput extends Component {
 
 					</div>
 					<div className='data-chart'>
-						{this.state.sentimentScore ? <Candlestick tickerToPass={this.state.tickerToPass} /> : ''}
+						{this.state.basicStockData ? <Candlestick tickerToPass={this.state.tickerToPass} /> : ''}
 					</div>
-				</div>
 
+					{this.state.stockCardShow ? <StockCard sentimentScore={this.state.sentimentScore}/> : ''}
+
+					{this.state.basicStockData ? <button className='button-green' onClick={this.killScreenAndRenderSavedCard}>SAVE</button> : ''}
+
+				</div>
 			</div>
 		)
 	}
