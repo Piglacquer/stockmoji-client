@@ -1,4 +1,74 @@
 .card-container{
-  background: black;
+  background: gray;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 50vw;
+  margin-bottom: 2vh;
+  margin-left: -8vw;
+  border-radius: 15px;
+  border-style: solid;
+  border-top: 3px;
+  border-right: 3px;
+  border-color: black;
 
+  .ticker-date{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    height: 7vh;
+    font-family: 'Roboto Condensed', sans-serif;
+
+    .ticker{
+      font-size: 2.5rem;
+      color: white;
+      font-family: 'Rammetto One', cursive;
+    }
+
+    .date{
+      color: white;
+    }
+  }
+
+  .sentiments-price{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-family: 'Roboto Condensed', sans-serif;
+
+    .sentiment-scores{
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      width: 30%;
+
+      .score{
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+
+        .sentiment-emoji{
+          font-size: 4rem;
+          margin: 0;
+        }
+        .sentiment{
+          font-size: 1rem;
+          font-family: 'Roboto Condensed', sans-serif;
+        }
+      }
+    }
+
+    .price{
+      font-size: 3rem;
+      font-family: 'Roboto Condensed', sans-serif;
+    }
+  }
 }

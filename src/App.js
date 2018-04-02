@@ -15,7 +15,6 @@ class App extends Component {
 	}
 
 	switchLandingAndApp = () =>{
-		console.log('hey')
 		this.setState({
 			showLanding: false,
 			showHeaderAndInput: true

@@ -18,33 +18,64 @@ class TickerInput extends Component {
 			basicStockData: false,
 			tickerToPass: null,
 			stockCardShow: false,
-			showAll: false
+			showAll: false,
+			prices: 0.1
 		}
+	}
+
+	setPrices = (data) => {
+		this.setState({
+			prices:data
+		})
 	}
 
 	getBasicStockData = (ticker) => {
 		fetch('https://api.intrinio.com/companies?ticker='+ticker, {
 			headers: new Headers({
-				Authorization: "Basic " + new Buffer('dcfac65d3703237d8ccf5698f693e5e9' + ':' + '1c58f8fcdd7c0f63f6e98f649e5365de').toString('base64')
+				Authorization: 'Basic ' + new Buffer('dcfac65d3703237d8ccf5698f693e5e9' + ':' + '1c58f8fcdd7c0f63f6e98f649e5365de').toString('base64')
 			})
 		})
 		.then(response => response.json())
 		.then(response => {
-			this.setState({basicStockData: response})
+			this.setState({
+				basicStockData: response
+			})
 		})
+		.then(() => this.getStockPriceData(ticker))
 	}
 
 	getStockPriceData = (ticker) => {
 		fetch('https://api.intrinio.com/prices?ticker='+ticker, {
 			headers: new Headers({
-				Authorization: "Basic " + new Buffer('dcfac65d3703237d8ccf5698f693e5e9' + ':' + '1c58f8fcdd7c0f63f6e98f649e5365de').toString('base64')
+				Authorization: 'Basic ' + new Buffer('dcfac65d3703237d8ccf5698f693e5e9' + ':' + '1c58f8fcdd7c0f63f6e98f649e5365de').toString('base64')
 			})
 		})
 		.then(response => response.json())
 		.then(response => this.setState({
-			stockPriceData: response.data
+			prices: response.data[0].close
 			})
 		)
+		.then(() => console.log(this.state.prices, 'state of prices'))
+	}
+
+	postStockData = () => {
+		var objToPost = {
+			ticker: this.state.ticker,
+			score: this.state.sentimentScore.score,
+			magnitude: this.state.sentimentScore.magnitude,
+			price: this.state.prices
+		}
+		console.log(objToPost)
+		fetch('https://stockmoji-db.herokuapp.com/', {
+			method: 'POST',
+			body:JSON.stringify(objToPost),
+			headers: new Headers({
+				'Content-type':'application/json'
+			})
+		})
+		.then(resp => resp.json())
+		.then(resp => console.log(resp))
+		.then(() => this.killScreenAndRenderSavedCard())
 	}
 
 	submitTicker = e => {
@@ -62,6 +93,9 @@ class TickerInput extends Component {
 			.then(resp => this.prepareHeadlineData(resp))
 			.then(() => {
 				this.sentimentAnalysis(this.state.sentimentDataToSend)
+			})
+			this.setState({
+				stockCardShow:false
 			})
 		console.log(this.state.tickerToPass, 'tickertopass end of submit')
 	}
@@ -98,7 +132,8 @@ class TickerInput extends Component {
 			.then(resp => resp.json())
 			.then(resp => {
 				this.setState({
-					sentimentScore: resp.message
+					sentimentScore: resp.message,
+					showAll: true
 				})
 			})
 		}
@@ -112,7 +147,7 @@ class TickerInput extends Component {
 	killScreenAndRenderSavedCard = () => {
 		console.log('killscreen')
 		this.setState({
-			basicStockData: false,
+			showAll: false,
 			stockCardShow: true
 		})
 		return <StockCard />
@@ -120,39 +155,39 @@ class TickerInput extends Component {
 
 	render() {
 		return (
-			<div className="input-response-container">
+			<div className='input-response-container'>
 				<div className='input-form-container'>
-					<form className='input-form' type="submit" onSubmit={this.submitTicker}>
+					<form className='input-form' type='submit' onSubmit={this.submitTicker}>
 						<input
-							className="input-ticker"
-							placeholder="AMZN"
-							type="text"
-							maxLength="5"
+							className='input-ticker'
+							placeholder='AMZN'
+							type='text'
+							maxLength='5'
 							value={this.state.ticker || ''}
-							name="content"
+							name='content'
 							onChange={event => {
 								this.formatInput(event)
 							}}
 						/>
-						<input className="submit-ticker" type="submit" value="G🤓!" />
+						<input className='submit-ticker' type='submit' value='G🤓!' />
 					</form>
 				</div>
 				<div className='container-of-all'>
 					<div className='score-and-data-container'>
 
-						{this.state.sentimentScore ? <TickerResponse sentimentScore={this.state.sentimentScore} /> : ''}
+						{this.state.showAll ? <TickerResponse sentimentScore={this.state.sentimentScore} /> : ''}
 
 
-						{this.state.sentimentScore ? <TickerResponseBasicInfo basicStockData={this.state.basicStockData} /> : ''}
+						{this.state.showAll ? <TickerResponseBasicInfo basicStockData={this.state.basicStockData} price={this.state.prices} /> : ''}
 
 					</div>
 					<div className='data-chart'>
-						{this.state.basicStockData ? <Candlestick tickerToPass={this.state.tickerToPass} /> : ''}
+						{this.state.showAll ? <Candlestick setPrices={this.setPrices} tickerToPass={this.state.tickerToPass} /> : ''}
 					</div>
 
-					{this.state.stockCardShow ? <StockCard sentimentScore={this.state.sentimentScore}/> : ''}
+					{this.state.stockCardShow ? <StockCard price = {this.state.prices} sentimentScore={this.state.sentimentScore}/> : ''}
 
-					{this.state.basicStockData ? <button className='button-green' onClick={this.killScreenAndRenderSavedCard}>SAVE</button> : ''}
+					{this.state.showAll ? <button className='button-green' onClick={this.postStockData}>SAVE</button> : ''}
 
 				</div>
 			</div>

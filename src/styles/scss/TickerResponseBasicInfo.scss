@@ -1,4 +1,7 @@
 .stock-info-container{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
   background: #545350;
   margin: 15px;
   border-radius: 15px;
@@ -15,6 +18,7 @@
     background: black;
     color: white;
     font-family: 'Rammetto One', cursive;
+    font-size: 2rem;
     width: 100%;
     padding-left: 10px;
   }
@@ -25,36 +29,50 @@
     padding-left: 10px;
     padding-right: 10px;
 
-    .stock-info-rows{
+    .stock-basics-and-price{
       display: flex;
-      flex-flow: column nowrap;
-      justify-content: space-around;
-      height: 15vh;
+      flex-flow: row nowrap;
+      justify-content: space-between;
 
-      .stock-info{
+      .stock-info-rows{
         display: flex;
-        flex-flow: row nowrap;
-        align-items: center;
+        flex-flow: column nowrap;
+        justify-content: space-around;
+        height: 15vh;
 
-        .stock-info-title{
-          font-family: 'Rammetto One', cursive;
+        .stock-info{
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+
+          .stock-info-title{
+            font-family: 'Rammetto One', cursive;
+          }
+
+          .stock-info-desc{
+            padding-left: 5px;
+            text-decoration: none;
+            font-family: 'Roboto Condensed', sans-serif;
+          }
         }
 
-        .stock-info-desc{
-          padding-left: 5px;
-          text-decoration: none;
+        .stock-url{
+
         }
       }
-
-      .stock-url{
-
-      }
-
-      .stock-description-container{
-        width: 90%;
+      .stock-price{
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size: 2rem;
+        align-self: center;
       }
     }
-
   }
+  .stock-description-container{
+    padding-left: 10px;
+    padding-right: 10px;
 
+    .stock-description{
+      font-family: 'Roboto Condensed', sans-serif;
+    }
+  }
 }

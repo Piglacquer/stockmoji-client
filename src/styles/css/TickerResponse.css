@@ -16,7 +16,8 @@
     border-style: solid;
     border-top: 3px;
     border-right: 3px;
-    border-color: black; }
+    border-color: black;
+    margin: 5px; }
     .response-emojis-container .score-response-emoji .score-emoji {
       text-align: center;
       font-size: 6rem;
@@ -28,7 +29,8 @@
       flex-flow: column nowrap;
       align-items: center; }
       .response-emojis-container .score-response-emoji .score-response .score-response-number {
-        font-size: 1rem; }
+        font-size: 1rem;
+        font-family: 'Roboto Condensed', sans-serif; }
       .response-emojis-container .score-response-emoji .score-response .score-response-title {
         font-family: 'Rammetto One', cursive; }
 

@@ -32,13 +32,13 @@ class TickerResponse extends Component {
         return 'emoji'
         break
       case '-0.30':
-        return 'emoji'
+        return '💩'
         break
       case '-0.20':
         return '😡'
         break
       case '-0.10':
-        return '🐈'
+        return '😰'
         break
       case '0.00':
         return '😶'
@@ -71,7 +71,7 @@ class TickerResponse extends Component {
         return '😁'
         break
       case '0.10':
-        return '☺️'
+        return '😇'
         break
       case '0.11':
         return '😚'
@@ -80,13 +80,13 @@ class TickerResponse extends Component {
         return '😉'
         break
       case '0.13':
-        return '😯'
+        return '👍'
         break
       case '0.14':
-        return '😯'
+        return '👏'
         break
       case '0.15':
-        return '😯'
+        return '👌'
         break
       case '0.16':
         return '😯'
@@ -98,7 +98,7 @@ class TickerResponse extends Component {
         return '😯'
         break
       case '0.19':
-        return 'emoji'
+        return '😆'
         break
       case '0.20':
         return '😽'
@@ -249,10 +249,10 @@ class TickerResponse extends Component {
         return '🙈'
         break
       case 35:
-        return ''
+        return '🙀'
         break
       case 40:
-        return 'emoji'
+        return '🌊'
         break
       case 45:
         return '🕷'

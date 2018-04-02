@@ -16,21 +16,20 @@ class Candlestick extends Component {
     }
 
     getStockPriceData(ticker) {
-      console.log(this.props.ticker)
       fetch('https://api.intrinio.com/prices?ticker=' + ticker, {
           headers: new Headers({
               Authorization: `Basic ${new Buffer('dcfac65d3703237d8ccf5698f693e5e9:1c58f8fcdd7c0f63f6e98f649e5365de').toString('base64')}`
           })
         })
         .then(response => response.json())
-        .then((response) => {
-          console.log(response, 'ajax being called multiple times?')
+        .then(response => {
+          console.log(response.data[0].close, 'setting prices')
+          this.props.setPrices(response.data[0].close)
           this.convertToCSV(response.data)
       })
     }
 
     convertToCSV(objArray) {
-      console.log(objArray, 'csv')
         const array = typeof objArray !== 'object' ? JSON.parse(objArray) : objArray;
         let csvString = '';
         const fields = Object.keys(objArray[0]);
@@ -48,16 +47,13 @@ class Candlestick extends Component {
             }
             csvString += line + '\r\n';
         }
-        console.log(this.state,'state before csv set')
         this.setState({
           csvString: csvString
         })
-        console.log(this.state, 'state after csv set')
         this.renderCandlestick(this.state.csvString)
     }
 
     renderCandlestick(csvData) {
-      console.log(this.state, 'renderCandle state')
         const container = this.refs.svgContainer;
 
         const margin = {top: 20, right: 20, bottom: 30, left: 50};

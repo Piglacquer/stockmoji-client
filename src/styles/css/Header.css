@@ -1,14 +1,12 @@
 .App-header {
-  background-color: #89edff;
   display: flex;
   flex-flow: row nowrap;
-  align-items: center;
-  justify-content: flex-start;
-  height: 100px;
+  background-color: #89edff;
   width: 100%;
   color: white; }
   .App-header .header-logo {
     font-family: 'Rammetto One', cursive;
+    font-size: 3rem;
     margin: 0 30px 0 30px; }
 
 /*# sourceMappingURL=Header.css.map */

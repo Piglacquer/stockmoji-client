@@ -20,6 +20,7 @@
         font-size: 3rem;
         width: 200px;
         text-align: center;
+        font-family: 'Roboto Condensed', sans-serif;
       }
 
       .submit-ticker{
@@ -29,12 +30,18 @@
         background: #14CCB6;
         border-radius: 15px;
         height: 100%;
+        border-style: solid;
+        border-top: 3px;
+        border-right: 3px;
+        border-color: black;
       }
     }
   }
 
   .container-of-all{
-    margin-left: 10vw;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
 
     .score-and-data-container{
       display: flex;
@@ -51,8 +58,7 @@
     }
 
     .button-green{
-      height: 50px;
-      width: 100px;
+      width: 200px;
       background: #14CCB6;
       border-radius: 15px;
       border-style: solid;
@@ -60,8 +66,8 @@
       border-right: 3px;
       border-color: black;
       font-family: 'Rammetto One', cursive;
-      font-size: 1.5rem;
-      margin-left: 33vw;
+      font-size: 2rem;
+      margin-bottom: 3vh;
     }
   }
 }

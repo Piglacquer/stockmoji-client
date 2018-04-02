@@ -1,4 +1,7 @@
 .stock-info-container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
   background: #545350;
   margin: 15px;
   border-radius: 15px;
@@ -14,6 +17,7 @@
     background: black;
     color: white;
     font-family: 'Rammetto One', cursive;
+    font-size: 2rem;
     width: 100%;
     padding-left: 10px; }
   .stock-info-container .stock-basic-info-container {
@@ -21,21 +25,33 @@
     flex-flow: column nowrap;
     padding-left: 10px;
     padding-right: 10px; }
-    .stock-info-container .stock-basic-info-container .stock-info-rows {
+    .stock-info-container .stock-basic-info-container .stock-basics-and-price {
       display: flex;
-      flex-flow: column nowrap;
-      justify-content: space-around;
-      height: 15vh; }
-      .stock-info-container .stock-basic-info-container .stock-info-rows .stock-info {
+      flex-flow: row nowrap;
+      justify-content: space-between; }
+      .stock-info-container .stock-basic-info-container .stock-basics-and-price .stock-info-rows {
         display: flex;
-        flex-flow: row nowrap;
-        align-items: center; }
-        .stock-info-container .stock-basic-info-container .stock-info-rows .stock-info .stock-info-title {
-          font-family: 'Rammetto One', cursive; }
-        .stock-info-container .stock-basic-info-container .stock-info-rows .stock-info .stock-info-desc {
-          padding-left: 5px;
-          text-decoration: none; }
-      .stock-info-container .stock-basic-info-container .stock-info-rows .stock-description-container {
-        width: 90%; }
+        flex-flow: column nowrap;
+        justify-content: space-around;
+        height: 15vh; }
+        .stock-info-container .stock-basic-info-container .stock-basics-and-price .stock-info-rows .stock-info {
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center; }
+          .stock-info-container .stock-basic-info-container .stock-basics-and-price .stock-info-rows .stock-info .stock-info-title {
+            font-family: 'Rammetto One', cursive; }
+          .stock-info-container .stock-basic-info-container .stock-basics-and-price .stock-info-rows .stock-info .stock-info-desc {
+            padding-left: 5px;
+            text-decoration: none;
+            font-family: 'Roboto Condensed', sans-serif; }
+      .stock-info-container .stock-basic-info-container .stock-basics-and-price .stock-price {
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size: 2rem;
+        align-self: center; }
+  .stock-info-container .stock-description-container {
+    padding-left: 10px;
+    padding-right: 10px; }
+    .stock-info-container .stock-description-container .stock-description {
+      font-family: 'Roboto Condensed', sans-serif; }
 
 /*# sourceMappingURL=TickerResponseBasicInfo.css.map */
