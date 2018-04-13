@@ -12,3 +12,6 @@ To run this app locally:
 4. After you have all the dependencies installed, run `npm start` to start serving the application.
 5. Enjoy!
 
+## Contact
+
+Patrick Biffle - pbiffle@gmail.com
