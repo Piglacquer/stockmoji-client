@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import './styles/css/TickerInput.css'
+import '../styles/css/TickerInput.css'
 import TickerResponse from './TickerResponse.js'
 import TickerResponseBasicInfo from './TickerResponseBasicInfo.js'
-import Candlestick from './Candlestick.js'
+import Candlestick from '../helpers/Candlestick'
 import StockCard from './StockCard.js'
 
 class TickerInput extends Component {
@@ -82,9 +82,7 @@ class TickerInput extends Component {
 		e.preventDefault()
 		this.setState({tickerToPass: null})
 		console.log(this.state.tickerToPass, 'tickertoPass')
-		var ticker = this.state.ticker
-		console.log(ticker, 'ticker')
-		this.setState({tickerToPass : ticker})
+		this.setState({tickerToPass : this.state.ticker})
 		console.log(this.state.tickerToPass, 'after set state')
 		this.getBasicStockData(this.state.ticker)
 

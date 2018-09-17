@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
 import techan from 'techan';
-import './styles/css/candlestick.css';
+import '../styles/css/Candlestick.css';
 
 class Candlestick extends Component {
   constructor(props){

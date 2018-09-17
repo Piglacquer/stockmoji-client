@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import './styles/css/App.css'
-import TickerInput from './TickerInput.js'
-import Header from './Header.js'
-import LandingAnimation from './LandingAnimation.js'
-import Login from './Login.js'
+import TickerInput from './components/TickerInput.js'
+import Header from './components/Header.js'
+import LandingAnimation from './components/LandingAnimation.js'
+import Login from './components/Login.js'
 
 class App extends Component {
 	constructor(props) {

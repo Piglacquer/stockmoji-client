@@ -1,13 +1,16 @@
-import React from 'react'
+import React, {Component} from 'react'
 import Lottie from 'react-lottie';
-import * as animationData from './animation.json'
+import * as animationData from '../assets/animation.json'
 
 
-export default class LottieControl extends React.Component {
+export default class LottieControl extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {isStopped: false, isPaused: false};
+    this.state = {
+      isStopped: false, 
+      isPaused: false
+    }
   }
 
   render() {

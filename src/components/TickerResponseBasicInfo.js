@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './styles/css/TickerResponseBasicInfo.css'
+import '../styles/css/TickerResponseBasicInfo.css'
 
 class TickerResponseBasicInfo extends Component {
 
