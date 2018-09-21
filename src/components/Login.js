@@ -15,29 +15,23 @@ class Login extends Component {
 	loginPost = (object) => {
 		console.log(JSON.stringify(object))
 		fetch('http://localhost:3000/auth/login',
-		{
-			method: 'POST',
-			body: JSON.stringify(object), // data can be `string` or {object}!
-			headers:
-				{
-				'Content-Type': 'application/json'
-				}
+		{	method: 'POST',
+			body: JSON.stringify(object),
+			headers:{'Content-Type': 'application/json'}
 		})
-			.then(resp => console.log(resp)
-			)}
+			.then(resp => resp.json())
+			.then(resp => console.log(resp))
+	}
 
 	createUserPost = (object) => {
 		fetch('http://localhost:3000/auth/signup',
-		{
-			method: 'POST',
-			body: JSON.stringify(object), // data can be `string` or {object}!
-			headers:
-				{
-				'Content-Type': 'application/json'
-				}
+		{	method: 'POST',
+			body: JSON.stringify(object),
+			headers:{'Content-Type': 'application/json'}
 		})
-			.then(resp => console.log(resp)
-	)}
+			.then(resp => resp.json())
+			.then(resp => console.log(resp))
+	}
 
 	render() {
 		return (
