@@ -9,50 +9,60 @@
   border-style: solid;
   border-top: 3px;
   border-right: 3px;
-  border-color: black; }
-  .card-container .ticker-date {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-    background-color: black;
-    padding-left: 15px;
-    padding-right: 15px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    height: 7vh;
-    font-family: 'Roboto Condensed', sans-serif; }
-    .card-container .ticker-date .ticker {
-      font-size: 2.5rem;
-      color: white;
-      font-family: 'Rammetto One', cursive; }
-    .card-container .ticker-date .date {
-      color: white; }
-  .card-container .sentiments-price {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 15px;
-    padding-right: 15px;
-    font-family: 'Roboto Condensed', sans-serif; }
-    .card-container .sentiments-price .sentiment-scores {
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: space-between;
-      width: 30%; }
-      .card-container .sentiments-price .sentiment-scores .score {
-        display: flex;
-        flex-flow: column nowrap;
-        align-items: center; }
-        .card-container .sentiments-price .sentiment-scores .score .sentiment-emoji {
-          font-size: 4rem;
-          margin: 0; }
-        .card-container .sentiments-price .sentiment-scores .score .sentiment {
-          font-size: 1rem;
-          font-family: 'Roboto Condensed', sans-serif; }
-    .card-container .sentiments-price .price {
-      font-size: 3rem;
-      font-family: 'Roboto Condensed', sans-serif; }
+  border-color: black;
+}
+.card-container .ticker-date {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  height: 7vh;
+  font-family: "Roboto Condensed", sans-serif;
+}
+.card-container .ticker-date .ticker {
+  font-size: 2.5rem;
+  color: white;
+  font-family: "Rammetto One", cursive;
+}
+.card-container .ticker-date .date {
+  color: white;
+}
+.card-container .sentiments-price {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-family: "Roboto Condensed", sans-serif;
+}
+.card-container .sentiments-price .sentiment-scores {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 30%;
+}
+.card-container .sentiments-price .sentiment-scores .score {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.card-container .sentiments-price .sentiment-scores .score .sentiment-emoji {
+  font-size: 4rem;
+  margin: 0;
+}
+.card-container .sentiments-price .sentiment-scores .score .sentiment {
+  font-size: 1rem;
+  font-family: "Roboto Condensed", sans-serif;
+}
+.card-container .sentiments-price .price {
+  font-size: 3rem;
+  font-family: "Roboto Condensed", sans-serif;
+}
 
 /*# sourceMappingURL=StockCard.css.map */

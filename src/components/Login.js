@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {navigate} from '@reach/router'
 import '../styles/css/Login.css'
 
 class Login extends Component {
@@ -20,7 +21,13 @@ class Login extends Component {
 			headers:{'Content-Type': 'application/json'}
 		})
 			.then(resp => resp.json())
-			.then(resp => console.log(resp))
+			.then(resp => {
+				console.log('resp', resp)
+				if(resp){
+					console.log("i made it here")
+					navigate(`/home/${resp}`)
+				}
+			})
 	}
 
 	createUserPost = (object) => {

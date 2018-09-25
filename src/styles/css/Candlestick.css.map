@@ -1,7 +1,1 @@
-{
-"version": 3,
-"mappings": "AACA,sBAAuB;EACnB,UAAU,EAAE,IAAI;;AAKhB,WAAS;EACL,MAAM,EAAE,IAAI;AAGhB,gBAAc;EACV,YAAY,EAAE,CAAC;AAGnB,cAAY;EACR,IAAI,EAAE,IAAI;EACV,MAAM,EAAE,IAAI;AAGhB,gBAAc;EACV,IAAI,EAAE,OAAO;EACb,MAAM,EAAE,OAAO;AAGnB,WAAS;EACL,MAAM,EAAE,KAAK;;AAQb,WAAK;EACD,MAAM,EAAE,KAAK;EACb,YAAY,EAAE,CAAC;AAGnB,WAAK;EACD,IAAI,EAAE,KAAK;EACX,SAAS,EAAE,EAAE",
-"sources": ["../scss/Candlestick.scss"],
-"names": [],
-"file": "Candlestick.css"
-}
+{"version":3,"sourceRoot":"","sources":["../scss/Candlestick.scss"],"names":[],"mappings":"AACA;EACI;;;AAKA;EACI;;AAGJ;EACI;;AAGJ;EACI;EACA;;AAGJ;EACI;EACA;;AAGJ;EACI;;;AAQA;EACI;EACA;;AAGJ;EACI;EACA","file":"Candlestick.css"}

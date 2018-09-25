@@ -3,53 +3,61 @@
   flex-flow: column nowrap;
   align-items: center;
   justify-content: space-between;
-  width: 100%; }
-  .input-response-container .input-form-container {
-    margin: 15px; }
-    .input-response-container .input-form-container .input-form {
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: space-between;
-      width: 25vw;
-      height: 10vh; }
-      .input-response-container .input-form-container .input-form .input-ticker {
-        border-radius: 15px;
-        font-size: 3rem;
-        width: 200px;
-        text-align: center;
-        font-family: 'Roboto Condensed', sans-serif; }
-      .input-response-container .input-form-container .input-form .submit-ticker {
-        border-style: none;
-        font-size: 3rem;
-        font-family: 'Rammetto One', cursive;
-        background: #14CCB6;
-        border-radius: 15px;
-        height: 100%;
-        border-style: solid;
-        border-top: 3px;
-        border-right: 3px;
-        border-color: black; }
-  .input-response-container .container-of-all {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center; }
-    .input-response-container .container-of-all .score-and-data-container {
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: space-around;
-      align-items: center;
-      width: 90%;
-      height: 100%; }
-    .input-response-container .container-of-all .button-green {
-      width: 200px;
-      background: #14CCB6;
-      border-radius: 15px;
-      border-style: solid;
-      border-top: 3px;
-      border-right: 3px;
-      border-color: black;
-      font-family: 'Rammetto One', cursive;
-      font-size: 2rem;
-      margin-bottom: 3vh; }
+  width: 100%;
+}
+.input-response-container .input-form-container {
+  margin: 15px;
+}
+.input-response-container .input-form-container .input-form {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 25vw;
+  height: 10vh;
+}
+.input-response-container .input-form-container .input-form .input-ticker {
+  border-radius: 15px;
+  font-size: 3rem;
+  width: 200px;
+  text-align: center;
+  font-family: "Roboto Condensed", sans-serif;
+}
+.input-response-container .input-form-container .input-form .submit-ticker {
+  border-style: none;
+  font-size: 3rem;
+  font-family: "Rammetto One", cursive;
+  background: #14CCB6;
+  border-radius: 15px;
+  height: 100%;
+  border-style: solid;
+  border-top: 3px;
+  border-right: 3px;
+  border-color: black;
+}
+.input-response-container .container-of-all {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.input-response-container .container-of-all .score-and-data-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  height: 100%;
+}
+.input-response-container .container-of-all .button-green {
+  width: 200px;
+  background: #14CCB6;
+  border-radius: 15px;
+  border-style: solid;
+  border-top: 3px;
+  border-right: 3px;
+  border-color: black;
+  font-family: "Rammetto One", cursive;
+  font-size: 2rem;
+  margin-bottom: 3vh;
+}
 
 /*# sourceMappingURL=TickerInput.css.map */

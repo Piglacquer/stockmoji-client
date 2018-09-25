@@ -4,6 +4,7 @@ import TickerInput from './components/TickerInput.js'
 import Header from './components/Header.js'
 import LandingAnimation from './components/LandingAnimation.js'
 import Login from './components/Login.js'
+import Routes from './components/Router'
 
 class App extends Component {
 	constructor(props) {
@@ -24,10 +25,11 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				{this.state.showLanding ? <LandingAnimation /> : ''}
+				<Routes />
+				{/* {this.state.showLanding ? <LandingAnimation /> : ''}
 				{this.state.showLanding ? <Login switchLandingAndApp = {this.switchLandingAndApp} /> : ''}
 				{this.state.showHeaderAndInput ? <Header /> : ''}
-				{this.state.showHeaderAndInput ? <TickerInput /> : ''}
+				{this.state.showHeaderAndInput ? <TickerInput /> : ''} */}
 			</div>
 		)
 	}
