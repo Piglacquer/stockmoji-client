@@ -14,20 +14,20 @@ class Login extends Component {
 	}
 	
 	loginPost = (object) => {
-		console.log(JSON.stringify(object))
-		fetch('http://localhost:3000/auth/login',
+		return fetch('http://localhost:3000/auth/login',
 		{	method: 'POST',
 			body: JSON.stringify(object),
+			credentials: 'include',
 			headers:{'Content-Type': 'application/json'}
 		})
 			.then(resp => resp.json())
 			.then(resp => {
-				console.log('resp', resp)
+				console.log(resp)
 				if(resp){
-					console.log("i made it here")
-					navigate(`/home/${resp}`)
+					// navigate(`/home/${resp}`)
 				}
 			})
+			.catch(console.error)
 	}
 
 	createUserPost = (object) => {
@@ -35,6 +35,16 @@ class Login extends Component {
 		{	method: 'POST',
 			body: JSON.stringify(object),
 			headers:{'Content-Type': 'application/json'}
+		})
+			.then(resp => resp.json())
+			.then(resp => console.log(resp))
+	}
+
+	testGet = () => {
+		fetch('http://localhost:3000/auth',
+		{
+			method: 'GET',
+			credentials: 'include'
 		})
 			.then(resp => resp.json())
 			.then(resp => console.log(resp))
@@ -56,6 +66,7 @@ class Login extends Component {
 					<button className='button-green' onClick={() => this.loginPost(this.state.user)}>LOGIN</button>
 					<button className='button-blue' onClick={() => this.createUserPost(this.state.user)}>CREATE NEW USER</button>
 				</div>
+				<button onClick={this.testGet}/>
 			</div>
 		)
 	}
