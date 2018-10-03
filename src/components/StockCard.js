@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {renderSentimentSwitch, renderMagnitudeSwitch} from '../helpers/Emojis'
 import '../styles/css/StockCard.css'
+import LogoutButton from './LogoutButton'
 
 class StockCard extends Component{
   constructor(props) {
@@ -56,7 +57,10 @@ class StockCard extends Component{
 
   render(){
     return(
-      this.state.dbItems ? this.createCards(this.state.dbItems) : null
+      <React.Fragment>
+      <LogoutButton />
+      {this.state.dbItems ? this.createCards(this.state.dbItems) : null}
+      </React.Fragment>
     )
   }
 }

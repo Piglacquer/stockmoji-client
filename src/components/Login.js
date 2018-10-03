@@ -9,7 +9,8 @@ class Login extends Component {
 			user: {
 				username: '',
 				password: ''
-			}
+			},
+			loggedIn: false
 		}
 	}
 	
@@ -24,7 +25,7 @@ class Login extends Component {
 			.then(resp => {
 				console.log(resp)
 				if(resp){
-					// navigate(`/home/${resp}`)
+					navigate(`/home/${resp.userId}`)
 				}
 			})
 			.catch(console.error)
@@ -37,17 +38,27 @@ class Login extends Component {
 			headers:{'Content-Type': 'application/json'}
 		})
 			.then(resp => resp.json())
-			.then(resp => console.log(resp))
+			.then(console.log)
 	}
 
-	testGet = () => {
+	isLoggedIn = () => {
 		fetch('http://localhost:3000/auth',
 		{
 			method: 'GET',
 			credentials: 'include'
 		})
 			.then(resp => resp.json())
-			.then(resp => console.log(resp))
+			.then(resp => {
+				if(resp.loggedIn){
+					console.log(resp.loggedIn)
+					return navigate(`/home/${resp}`)
+				} 
+				return resp
+			})
+	}
+
+	componentDidMount(){
+		this.isLoggedIn()
 	}
 
 	render() {
