@@ -1,7 +1,7 @@
 import React from 'react'
 import Login from '../components/Login'
-import '../styles/css/LoginPage.css'
 import LandingAnimation from '../components/LandingAnimation'
+import '../styles/css/LoginPage.css'
 
 const LoginPage = () => {
     return (

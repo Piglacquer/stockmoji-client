@@ -13,6 +13,7 @@ class StockCard extends Component{
 
   componentDidMount(){
     this.getDbItems()
+    console.log(Component)
   }
 
   createCards = (array) => {

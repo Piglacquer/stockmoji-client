@@ -50,8 +50,8 @@ class Login extends Component {
 			.then(resp => resp.json())
 			.then(resp => {
 				if(resp.loggedIn){
-					console.log(resp.loggedIn)
-					return navigate(`/home/${resp}`)
+					console.log(resp)
+					return navigate(`/home/${resp.userId}`)
 				} 
 				return resp
 			})
@@ -59,6 +59,7 @@ class Login extends Component {
 
 	componentDidMount(){
 		this.isLoggedIn()
+
 	}
 
 	render() {

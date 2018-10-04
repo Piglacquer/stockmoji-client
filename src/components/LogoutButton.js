@@ -6,7 +6,7 @@ const logout = () => {
         method: 'GET',
         credentials: 'include'
     })
-    // .then(resp => resp.json())
+    .then(console.log)
     .then(navigate('/'))
 }
 
