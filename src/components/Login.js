@@ -16,7 +16,8 @@ class Login extends Component {
 	
 	loginPost = (object) => {
 		return fetch('http://localhost:3000/auth/login',
-		{	method: 'POST',
+		{	
+			method: 'POST',
 			body: JSON.stringify(object),
 			credentials: 'include',
 			headers:{'Content-Type': 'application/json'}
@@ -24,7 +25,7 @@ class Login extends Component {
 			.then(resp => resp.json())
 			.then(resp => {
 				console.log(resp)
-				if(resp){
+				if(resp.userId){
 					navigate(`/home/${resp.userId}`)
 				}
 			})
@@ -32,25 +33,24 @@ class Login extends Component {
 	}
 
 	createUserPost = (object) => {
-		fetch('http://localhost:3000/auth/signup',
-		{	method: 'POST',
+		return fetch('http://localhost:3000/auth/signup',
+		{	
+			method: 'POST',
 			body: JSON.stringify(object),
 			headers:{'Content-Type': 'application/json'}
 		})
 			.then(resp => resp.json())
-			.then(console.log)
 	}
 
 	isLoggedIn = () => {
-		fetch('http://localhost:3000/auth',
-		{
+		return fetch('http://localhost:3000/auth',
+		{	
 			method: 'GET',
 			credentials: 'include'
 		})
 			.then(resp => resp.json())
 			.then(resp => {
 				if(resp.loggedIn){
-					console.log(resp)
 					return navigate(`/home/${resp.userId}`)
 				} 
 				return resp
@@ -68,17 +68,16 @@ class Login extends Component {
 				<div className='form'>
 					<label className='label'>USERNAME
 						<input className='input' value={this.state.user.username} onChange={(e) => 
-							this.setState({user: {... this.state.user, username: e.target.value}
+							this.setState({user: {...this.state.user, username: e.target.value}
 						})}/>
 					</label>
 					<label className='label'>PASSWORD
 						<input value={this.state.user.password} onChange={(e) => 
-							this.setState({ user: {... this.state.user, password: e.target.value}})}type='password' className='input'/>
+							this.setState({ user: {...this.state.user, password: e.target.value}})}type='password' className='input'/>
 					</label>
 					<button className='button-green' onClick={() => this.loginPost(this.state.user)}>LOGIN</button>
 					<button className='button-blue' onClick={() => this.createUserPost(this.state.user)}>CREATE NEW USER</button>
 				</div>
-				<button onClick={this.testGet}/>
 			</div>
 		)
 	}

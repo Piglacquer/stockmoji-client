@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import {renderSentimentSwitch, renderMagnitudeSwitch} from '../helpers/Emojis'
+import {navigate} from '@reach/router'
 import '../styles/css/StockCard.css'
-import LogoutButton from './LogoutButton'
+import LogoutButton from './buttons/LogoutButton'
 
 class StockCard extends Component{
   constructor(props) {
@@ -12,8 +13,15 @@ class StockCard extends Component{
 	}
 
   componentDidMount(){
-    this.getDbItems()
-    console.log(Component)
+    this.isLoggedIn().then(resp => {
+      if(!resp){
+        return
+      }
+      if(resp.loggedIn){
+        this.getDbItems()
+      }
+      return
+    })
   }
 
   createCards = (array) => {
@@ -53,14 +61,34 @@ class StockCard extends Component{
         dbItems:resp.data
       })
     })
-    .then(() => console.log(this.state.dbItems))
   }
+
+  isLoggedIn = () => {
+		return fetch('http://localhost:3000/auth',
+		{	
+			method: 'GET',
+			credentials: 'include'
+		})
+			.then(resp => resp.json())
+			.then(resp => {
+				if(resp.loggedIn && window.location.href.includes('home')){
+					return resp
+        } 
+        // if(resp.loggedIn){
+        //   return navigate(`/home/${resp.userId}`)
+        // }
+				if(!resp.loggedIn){
+          return navigate('/')
+        }
+        return resp
+			})
+	}
 
   render(){
     return(
       <React.Fragment>
-      <LogoutButton />
-      {this.state.dbItems ? this.createCards(this.state.dbItems) : null}
+        <LogoutButton />
+        {this.state.dbItems ? this.createCards(this.state.dbItems) : null}
       </React.Fragment>
     )
   }

@@ -1,18 +1,18 @@
 import React from 'react'
 import {navigate} from '@reach/router'
+import '../../styles/css/buttons/Negative.css'
 
 const logout = () => {
-    fetch('http://localhost:3000/auth/logout',{ 
+    return fetch('http://localhost:3000/auth/logout',{ 
         method: 'GET',
         credentials: 'include'
     })
-    .then(console.log)
     .then(navigate('/'))
 }
 
 const LogoutButton = () => {
     return (
-        <button onClick={logout}>
+        <button className='button-negative-wide' onClick={logout}>
             Logout
         </button>
     )

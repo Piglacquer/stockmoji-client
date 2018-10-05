@@ -1,0 +1,15 @@
+.button-negative-wide {
+    height: 30px;
+    background: #CA054D;
+    transition: 0.3s;
+    border-radius: 15px;
+    border-style: solid;
+    border-top: 3px;
+    border-right: 3px;
+    border-color: black;
+    font-family: 'Rammetto One', cursive;
+}
+
+.button-negative-wide:hover {
+    background: #930439;
+}
