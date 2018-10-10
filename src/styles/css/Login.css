@@ -8,8 +8,6 @@
   border-top: 3px;
   border-right: 3px;
   border-color: black;
-  position: absolute;
-  margin-top: 400px;
 }
 .Login .form {
   display: flex;
@@ -28,26 +26,6 @@
 }
 .Login .form .label .input {
   border-radius: 15px;
-}
-.Login .form .button-green {
-  height: 30px;
-  background: #14CCB6;
-  border-radius: 15px;
-  border-style: solid;
-  border-top: 3px;
-  border-right: 3px;
-  border-color: black;
-  font-family: "Rammetto One", cursive;
-}
-.Login .form .button-blue {
-  height: 30px;
-  background: #89EDFF;
-  border-radius: 15px;
-  border-style: solid;
-  border-top: 3px;
-  border-right: 3px;
-  border-color: black;
-  font-family: "Rammetto One", cursive;
 }
 
 /*# sourceMappingURL=Login.css.map */

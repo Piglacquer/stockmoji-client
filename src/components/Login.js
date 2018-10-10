@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {navigate} from '@reach/router'
-import '../styles/css/buttons/Affirmative.css'
+import '../styles/css/Buttons.css'
 import '../styles/css/Login.css'
 
 class Login extends Component {
@@ -11,7 +11,8 @@ class Login extends Component {
 				username: '',
 				password: ''
 			},
-			loggedIn: false
+			loggedIn: false,
+			message: null
 		}
 	}
 	
@@ -76,8 +77,8 @@ class Login extends Component {
 						<input value={this.state.user.password} onChange={(e) => 
 							this.setState({ user: {...this.state.user, password: e.target.value}})}type='password' className='input'/>
 					</label>
-					<button className='button-affirmative-wide' onClick={() => this.loginPost(this.state.user)}>LOGIN</button>
-					<button className='button-blue' onClick={() => this.createUserPost(this.state.user)}>CREATE NEW USER</button>
+					<button className='button-wide affirmative' onClick={() => this.loginPost(this.state.user)}>LOGIN</button>
+					<button className='button-wide neutral' onClick={() => this.createUserPost(this.state.user)}>CREATE NEW USER</button>
 				</div>
 			</div>
 		)

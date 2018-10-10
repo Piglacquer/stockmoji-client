@@ -5,9 +5,14 @@ import '../styles/css/LoginPage.css'
 
 const LoginPage = () => {
     return (
-        <div className='loginPage'>
-            <LandingAnimation />
-            <Login />
+        <div className='landing'>
+            <div className='landing-hero-description'>
+                <img className='hero-half' src='https://themorningnews.org/images/content/gallery/0225.jpg' alt='tree-rings'/>
+                <div className='login-half'>
+                    <LandingAnimation height={300} width={600}/>
+                    <Login />
+                </div>
+            </div>
         </div>
     )
 }

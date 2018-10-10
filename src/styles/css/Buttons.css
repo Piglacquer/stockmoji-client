@@ -1,0 +1,36 @@
+.button-wide {
+  height: 30px;
+  transition: 0.3s;
+  border-radius: 15px;
+  border-style: solid;
+  border-top: 3px;
+  border-right: 3px;
+  border-color: black;
+  font-family: "Rammetto One", cursive;
+}
+
+.button-wide.affirmative {
+  background: #8DB69A;
+}
+
+.button-wide.affirmative:hover {
+  background: #639B75;
+}
+
+.button-wide.negative {
+  background: #CA054D;
+}
+
+.button-wide.negative:hover {
+  background: #930439;
+}
+
+.button-wide.neutral {
+  background: #BCF4F5;
+}
+
+.button-wide.neutral:hover {
+  background: #9AC8C9;
+}
+
+/*# sourceMappingURL=Buttons.css.map */

@@ -25,8 +25,8 @@ export default class LottieControl extends Component {
 
     return <div>
       <Lottie options={defaultOptions}
-              height={600}
-              width={1200}
+              height={this.props.height}
+              width={this.props.width}
               isStopped={this.state.isStopped}
               isPaused={this.state.isPaused}
               />

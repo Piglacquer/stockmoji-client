@@ -1,0 +1,31 @@
+.landing {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100vw;
+}
+
+.landing-hero-description {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  justify-content: space-between;
+  align-content: center;
+  padding-right: 10vw;
+}
+
+.hero-half {
+  width: 50vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.login-half {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  height: 100vh;
+}
+
+/*# sourceMappingURL=LoginPage.css.map */

@@ -1,6 +1,6 @@
 import React from 'react'
 import {navigate} from '@reach/router'
-import '../../styles/css/buttons/Negative.css'
+import '../../styles/css/Buttons.css'
 
 const logout = () => {
     return fetch('http://localhost:3000/auth/logout',{ 
@@ -12,7 +12,7 @@ const logout = () => {
 
 const LogoutButton = () => {
     return (
-        <button className='button-negative-wide' onClick={logout}>
+        <button className='button-wide negative' onClick={logout}>
             Logout
         </button>
     )
