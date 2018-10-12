@@ -7,9 +7,9 @@ const LoginPage = () => {
     return (
         <div className='landing'>
             <div className='landing-hero-description'>
-                <img className='hero-half' src='https://themorningnews.org/images/content/gallery/0225.jpg' alt='tree-rings'/>
+                <div className='hero-half' />
                 <div className='login-half'>
-                    <LandingAnimation height={300} width={600}/>
+                    <LandingAnimation height={300} width={700}/>
                     <Login />
                 </div>
             </div>

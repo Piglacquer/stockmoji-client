@@ -15,7 +15,8 @@
 
 .hero-half {
   width: 50vw;
-  height: 100vh;
+  background-image: url("https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ef560e43d9edf981e37320ae5f0edd3d&auto=format&fit=crop&w=3300&q=80");
+  background-size: cover;
   overflow: hidden;
 }
 
