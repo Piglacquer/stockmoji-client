@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import TickerInput from '../components/TickerInput'
+import LogoutButton from '../components/buttons/LogoutButton'
 
 class Dashboard extends Component {
     constructor(props){
@@ -10,7 +12,11 @@ class Dashboard extends Component {
 
     render(){
         return(
-            <h1>Dashboard</h1>
+            <React.Fragment>
+                <h1>Dashboard</h1>
+                <LogoutButton />
+                <TickerInput />
+            </React.Fragment>
         )
     }
 }

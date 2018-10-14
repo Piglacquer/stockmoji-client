@@ -30,7 +30,7 @@ class TickerInput extends Component {
 	}
 
 	getBasicStockData = (ticker) => {
-		fetch('https://api.intrinio.com/companies?ticker='+ticker, {
+		fetch(`https://api.intrinio.com/companies?ticker=${ticker}`, {
 			headers: new Headers({
 				Authorization: 'Basic ' + new Buffer('dcfac65d3703237d8ccf5698f693e5e9' + ':' + '1c58f8fcdd7c0f63f6e98f649e5365de').toString('base64')
 			})
@@ -45,7 +45,7 @@ class TickerInput extends Component {
 	}
 
 	getStockPriceData = (ticker) => {
-		fetch('https://api.intrinio.com/prices?ticker='+ticker, {
+		fetch(`https://api.intrinio.com/prices?ticker=${ticker}`, {
 			headers: new Headers({
 				Authorization: 'Basic ' + new Buffer('dcfac65d3703237d8ccf5698f693e5e9' + ':' + '1c58f8fcdd7c0f63f6e98f649e5365de').toString('base64')
 			})

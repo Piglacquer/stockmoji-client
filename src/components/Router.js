@@ -4,6 +4,7 @@ import {Router} from '@reach/router'
 import LandingPage from '../views/LandingPage'
 import LoginPage from '../views/LoginPage'
 import CreateAccountPage from '../views/CreateAccountPage'
+import Dashboard from '../views/Dashboard'
 import StockCard from '../components/StockCard'
 
 const Routes = () => {
@@ -12,7 +13,8 @@ const Routes = () => {
             <LandingPage path='/' />
             <LoginPage path='/login' />
             <CreateAccountPage path='/create' />
-            <StockCard path='/home/:id' />
+            <Dashboard path='/home/:id' />
+            {/* <StockCard path='/home/:id' /> */}
         </Router>
     )
 }
