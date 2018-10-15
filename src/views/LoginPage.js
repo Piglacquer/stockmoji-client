@@ -1,6 +1,6 @@
 import React from 'react'
 import Login from '../components/Login'
-import LandingAnimation from '../components/LandingAnimation'
+import Animation from '../components/Animation'
 import '../styles/css/LoginPage.css'
 
 const LoginPage = () => {
@@ -9,7 +9,7 @@ const LoginPage = () => {
             <div className='landing-hero-description'>
                 <div className='hero-half' />
                 <div className='login-half'>
-                    <LandingAnimation height={300} width={700}/>
+                    <Animation height={300} width={700} loop={false}/>
                     <Login />
                 </div>
             </div>

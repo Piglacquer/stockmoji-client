@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Lottie from 'react-lottie';
-import * as animationData from '../assets/animation.json'
+import * as landingAnimation from '../assets/animation.json'
+import * as loadingAnimation from '../assets/loader.json'
 
 
 export default class LottieControl extends Component {
@@ -15,9 +16,9 @@ export default class LottieControl extends Component {
 
   render() {
     const defaultOptions = {
-      loop: false,
+      loop: this.props.loop,
       autoplay: true,
-      animationData: animationData,
+      animationData: this.props.loading ? loadingAnimation : landingAnimation,
       rendererSettings: {
         preserveAspectRatio: 'xMidYMid slice'
       }

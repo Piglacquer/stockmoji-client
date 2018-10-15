@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import TickerInput from '../components/TickerInput'
 import LogoutButton from '../components/buttons/LogoutButton'
+import Animation from '../components/Animation'
 
 class Dashboard extends Component {
     constructor(props){

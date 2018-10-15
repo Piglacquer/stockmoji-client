@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import '../styles/css/TickerInput.css'
 import TickerResponse from './TickerResponse.js'
+import Animation from './Animation'
 import TickerResponseBasicInfo from './TickerResponseBasicInfo.js'
 import Candlestick from '../helpers/Candlestick'
 import StockCard from './StockCard.js'
@@ -19,7 +20,8 @@ class TickerInput extends Component {
 			tickerToPass: null,
 			stockCardShow: false,
 			showAll: false,
-			prices: 0.1
+			prices: 0.1,
+			loading: false
 		}
 	}
 
@@ -80,10 +82,7 @@ class TickerInput extends Component {
 
 	submitTicker = e => {
 		e.preventDefault()
-		this.setState({tickerToPass: null})
-		console.log(this.state.tickerToPass, 'tickertoPass')
-		this.setState({tickerToPass : this.state.ticker})
-		console.log(this.state.tickerToPass, 'after set state')
+		this.setState({tickerToPass: this.state.ticker, loading: true})
 		this.getBasicStockData(this.state.ticker)
 
 		fetch('https://stockpickeremoji.herokuapp.com/' + this.state.ticker)
@@ -91,11 +90,10 @@ class TickerInput extends Component {
 			.then(resp => this.prepareHeadlineData(resp))
 			.then(() => {
 				this.sentimentAnalysis(this.state.sentimentDataToSend)
+				this.setState({
+					stockCardShow:false
+				})
 			})
-			this.setState({
-				stockCardShow:false
-			})
-		console.log(this.state.tickerToPass, 'tickertopass end of submit')
 	}
 
 	formatInput = e => {
@@ -119,22 +117,32 @@ class TickerInput extends Component {
 		})
 	}
 
+	loadingAwait = () => {
+		return new Promise((resolve) => {
+			setTimeout(resolve, 2000)
+		})
+	}
+
 	sentimentAnalysis = data => {
-		fetch('https://stockpickeremoji.herokuapp.com/', {
+		Promise.all([
+			this.loadingAwait(), 
+			fetch('https://stockpickeremoji.herokuapp.com/', {
 			method: 'POST',
 			body: JSON.stringify(data),
 			headers: new Headers({
 				'content-type': 'application/json'
 			})
 		})
-			.then(resp => resp.json())
-			.then(resp => {
-				this.setState({
-					sentimentScore: resp.message,
-					showAll: true
-				})
+		.then(resp => resp.json())
+	])
+		.then(([_,resp]) => {
+			this.setState({
+				sentimentScore: resp.message,
+				showAll: true,
+				loading: false
 			})
-		}
+		})
+	}
 
 	handleEmptyResponse = () => {
 		if (this.state.sentimentScore.magnitude === 0) {
@@ -149,6 +157,29 @@ class TickerInput extends Component {
 			stockCardShow: true
 		})
 		return <StockCard />
+	}
+
+	responseContainer = () => {
+		return (
+			<div className='container-of-all'>
+					<div className='score-and-data-container'>
+
+						{this.state.showAll ? <TickerResponse sentimentScore={this.state.sentimentScore} /> : ''}
+
+
+						{this.state.showAll ? <TickerResponseBasicInfo basicStockData={this.state.basicStockData} price={this.state.prices} /> : ''}
+
+					</div>
+					<div className='data-chart'>
+						{this.state.showAll ? <Candlestick setPrices={this.setPrices} tickerToPass={this.state.tickerToPass} /> : ''}
+					</div>
+
+					{this.state.stockCardShow ? <StockCard price = {this.state.prices} sentimentScore={this.state.sentimentScore}/> : ''}
+
+					{this.state.showAll ? <button className='button-green' onClick={this.postStockData}>SAVE</button> : ''}
+
+				</div>
+		)
 	}
 
 	render() {
@@ -170,24 +201,7 @@ class TickerInput extends Component {
 						<input className='submit-ticker' type='submit' value='G🤓!' />
 					</form>
 				</div>
-				<div className='container-of-all'>
-					<div className='score-and-data-container'>
-
-						{this.state.showAll ? <TickerResponse sentimentScore={this.state.sentimentScore} /> : ''}
-
-
-						{this.state.showAll ? <TickerResponseBasicInfo basicStockData={this.state.basicStockData} price={this.state.prices} /> : ''}
-
-					</div>
-					<div className='data-chart'>
-						{this.state.showAll ? <Candlestick setPrices={this.setPrices} tickerToPass={this.state.tickerToPass} /> : ''}
-					</div>
-
-					{this.state.stockCardShow ? <StockCard price = {this.state.prices} sentimentScore={this.state.sentimentScore}/> : ''}
-
-					{this.state.showAll ? <button className='button-green' onClick={this.postStockData}>SAVE</button> : ''}
-
-				</div>
+				{this.state.loading ? <Animation loading={true} height={300} width={300} loop={true}	/> : this.responseContainer()}
 			</div>
 		)
 	}
