@@ -61,25 +61,6 @@ class Login extends Component {
 			})
 	}
 
-	loginForm = () => {
-		return(
-		<div className="Login">
-			<div className='form'>
-				<label className='label'>USERNAME
-					<input className='input' value={this.state.user.username} onChange={(e) => 
-						this.setState({user: {...this.state.user, username: e.target.value}
-					})}/>
-				</label>
-				<label className='label'>PASSWORD
-					<input value={this.state.user.password} onChange={(e) => 
-						this.setState({ user: {...this.state.user, password: e.target.value}})}type='password' className='input'/>
-				</label>
-				<button className='button-wide affirmative' onClick={() => this.loginPost(this.state.user)}>LOGIN</button>
-				<button className='button-wide neutral' onClick={() => this.createUserPost(this.state.user)}>CREATE NEW USER</button>
-			</div>
-		</div>
-		)
-	}
 	componentDidMount(){
 		this.isLoggedIn()
 	}
@@ -87,7 +68,21 @@ class Login extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				{!this.state.loading ? this.loginForm() : null}
+				<div className="Login">
+					<div className='form'>
+						<label className='label'>USERNAME
+							<input className='input' value={this.state.user.username} onChange={(e) => 
+								this.setState({user: {...this.state.user, username: e.target.value}
+							})}/>
+						</label>
+						<label className='label'>PASSWORD
+							<input value={this.state.user.password} onChange={(e) => 
+								this.setState({ user: {...this.state.user, password: e.target.value}})}type='password' className='input'/>
+						</label>	
+						<button className='button-wide affirmative' onClick={() => this.loginPost(this.state.user)}>LOGIN</button>
+						<button className='button-wide neutral' onClick={() => this.createUserPost(this.state.user)}>CREATE NEW USER</button>
+					</div>
+				</div>
 			</React.Fragment>
 		)
 	}

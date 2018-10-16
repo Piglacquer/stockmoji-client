@@ -1,0 +1,10 @@
+form {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+label {
+  color: white;
+}
+
+/*# sourceMappingURL=CreateAccount.css.map */

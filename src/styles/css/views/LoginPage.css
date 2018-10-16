@@ -1,13 +1,15 @@
-.landing {
+.login-page {
   display: flex;
   flex-flow: column nowrap;
   width: 100vw;
+  height: 100vh;
 }
 
-.landing-hero-description {
+.login-hero-description {
   display: flex;
   flex-flow: row nowrap;
   width: 100%;
+  height: 100%;
   justify-content: space-between;
   align-content: center;
   padding-right: 10vw;
@@ -26,7 +28,7 @@
   justify-content: center;
   align-items: center;
   width: 50vw;
-  height: 100vh;
+  height: 100%;
 }
 
 /*# sourceMappingURL=LoginPage.css.map */

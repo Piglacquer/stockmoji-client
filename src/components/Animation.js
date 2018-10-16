@@ -17,6 +17,7 @@ export default class LottieControl extends Component {
   render() {
     const defaultOptions = {
       loop: this.props.loop,
+      renderer: 'svg',
       autoplay: true,
       animationData: this.props.loading ? loadingAnimation : landingAnimation,
       rendererSettings: {

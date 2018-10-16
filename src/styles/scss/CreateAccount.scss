@@ -1,5 +1,8 @@
-.loginPage {
+form {
     display: flex;
     flex-flow: column nowrap;
-    align-items: center;
 }
+
+    label {
+        color: white;
+    }

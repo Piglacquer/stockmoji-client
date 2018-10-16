@@ -1,0 +1,15 @@
+.landing-page {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.landing-buttons {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 50vw;
+  justify-content: center;
+  align-items: center;
+}
+
+/*# sourceMappingURL=LandingPage.css.map */
