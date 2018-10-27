@@ -16,15 +16,11 @@ class CreateAccount extends Component {
     render(){
         return(
             <div className='account-form'>
-                <form>
-                    <label>Email</label>
-                    <input type='text'></input>
-                    <label>Username</label>
-                    <input type='text'></input>
-                    <label>Password</label>
-                    <input type='password'></input>
-                    <label>Password Match</label>
-                    <input type='password'></input>
+                <form className='form-inputs'>
+                    <label>Email<input type='text'></input></label>
+                    <label>Username<input type='text'></input></label>
+                    <label>Password<input type='password'></input></label>
+                    <label>Password Match<input type='password'></input></label>
                 </form>
             </div>
         )

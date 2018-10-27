@@ -6,9 +6,18 @@
     width: 100vw;
 }
 
-    .hero-image {
-        background-image: url('https://images.unsplash.com/photo-1521579772986-45a33628a34e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=171149e28b4b8aa171238f11410d072e&auto=format&fit=crop&w=3300&q=80');
-        background-size: cover;
-        width: 50vw;
+    .create-account-info {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-around;
+        align-items: center;
+        width: 50%;
         height: 100%;
     }
+
+        .hero-image {
+            background-image: url('https://images.unsplash.com/photo-1521579772986-45a33628a34e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=171149e28b4b8aa171238f11410d072e&auto=format&fit=crop&w=3300&q=80');
+            background-size: cover;
+            width: 50vw;
+            height: 100%;
+        }

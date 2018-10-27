@@ -37,6 +37,9 @@ const renderMagnitudeSwitch = (score) => {
       case 55:
         return '😱'
         break;
+      case 60: 
+        return '☢️'
+        break;
       default:
         console.log('nothing came through')
     }
@@ -79,9 +82,14 @@ const magnitudeRound = (magnitude) => {
     if(magnitude>=53 && magnitude<58){
       return 55
     }
+    if(magnitude>=58 && magnitude<62){
+      return 60
+    }
   }
 
 const renderSentimentSwitch = (score) => {
+  score = score.toString()
+  console.log(score, 'score')
     switch(score){
       case '-1.00':
         return ''
@@ -113,7 +121,7 @@ const renderSentimentSwitch = (score) => {
       case '-0.10':
         return '😰'
         break;
-      case '0.00':
+      case '0':
         return '😶'
         break;
       case '0.01':

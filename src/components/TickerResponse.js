@@ -9,6 +9,7 @@ class TickerResponse extends Component {
   }
 
 	render() {
+    console.log(this.props)
 		return (
 			<div className='response-emojis-container'>
         <div className='score-response-emoji'>
