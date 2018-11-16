@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {navigate} from '@reach/router'
+import CreateAccountButton from './buttons/CreateAccountButton'
 import '../styles/css/Buttons.css'
 import '../styles/css/Login.css'
 
@@ -13,7 +14,8 @@ class Login extends Component {
 			},
 			loggedIn: false,
 			message: null,
-			loading: false
+			loading: false,
+			buttonCaption: 'Create Account'
 		}
 	}
 	
@@ -80,7 +82,8 @@ class Login extends Component {
 								this.setState({ user: {...this.state.user, password: e.target.value}})}type='password' className='input'/>
 						</label>	
 						<button className='button-wide affirmative' onClick={() => this.loginPost(this.state.user)}>LOGIN</button>
-						<button className='button-wide neutral' onClick={() => this.createUserPost(this.state.user)}>CREATE NEW USER</button>
+						{/* <button className='button-wide neutral' onClick={() => this.createUserPost(this.state.user)}>CREATE NEW USER</button> */}
+						<CreateAccountButton />
 					</div>
 				</div>
 			</React.Fragment>

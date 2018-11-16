@@ -89,7 +89,6 @@ const magnitudeRound = (magnitude) => {
 
 const renderSentimentSwitch = (score) => {
   score = score.toString()
-  console.log(score, 'score')
     switch(score){
       case '-1.00':
         return ''

@@ -6,7 +6,8 @@ const redirectCreateAccount = () => {
     return navigate('/create')
 }
 
-const CreateAccountButton = () => {
+const CreateAccountButton = (props) => {
+    console.log(props)
     return (
         <button className='button-wide affirmative' onClick={redirectCreateAccount}>
             Create Account
