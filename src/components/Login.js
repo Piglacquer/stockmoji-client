@@ -38,16 +38,6 @@ class Login extends Component {
 			.catch(console.error)
 	}
 
-	createUserPost = (object) => {
-		return fetch('http://localhost:3000/auth/signup',
-		{	
-			method: 'POST',
-			body: JSON.stringify(object),
-			headers:{'Content-Type': 'application/json'}
-		})
-			.then(resp => resp.json())
-	}
-
 	isLoggedIn = () => {
 		return fetch('http://localhost:3000/auth',
 		{	

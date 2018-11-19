@@ -65,11 +65,13 @@ class TickerInput extends Component {
 			ticker: this.state.ticker,
 			score: this.state.sentimentScore.score,
 			magnitude: this.state.sentimentScore.magnitude,
-			price: this.state.prices
+			price: this.state.prices,
+			date: new Date
 		}
 		console.log(objToPost)
-		fetch('https://stockmoji-db.herokuapp.com/', {
+		fetch('http://localhost:3000/stocks', {
 			method: 'POST',
+			credentials: 'include',
 			body:JSON.stringify(objToPost),
 			headers: new Headers({
 				'Content-type':'application/json'
