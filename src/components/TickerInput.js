@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import '../styles/css/TickerInput.css'
-import TickerResponse from './TickerResponse.js'
 import Animation from './Animation'
-import TickerResponseBasicInfo from './TickerResponseBasicInfo.js'
-import Candlestick from '../helpers/Candlestick'
-import StockCard from './StockCard.js'
+import TickerResponseContainer from './TickerResponseContainer'
+import StockCard from './StockCard'
 
 class TickerInput extends Component {
 	constructor(props) {
@@ -26,50 +24,30 @@ class TickerInput extends Component {
 	}
 
 	setPrices = (data) => {
-		this.setState({
+		return this.setState({
 			prices:data
 		})
 	}
 
-	getBasicStockData = (ticker) => {
-		fetch(`https://api.intrinio.com/companies?ticker=${ticker}`, {
-			headers: new Headers({
-				Authorization: 'Basic ' + new Buffer('dcfac65d3703237d8ccf5698f693e5e9' + ':' + '1c58f8fcdd7c0f63f6e98f649e5365de').toString('base64')
-			})
-		})
-		.then(response => response.json())
-		.then(response => {
-			this.setState({
-				basicStockData: response
-			})
-		})
-		.then(() => this.getStockPriceData(ticker))
-	}
-
 	getStockPriceData = (ticker) => {
-		fetch(`https://api.intrinio.com/prices?ticker=${ticker}`, {
-			headers: new Headers({
-				Authorization: 'Basic ' + new Buffer('dcfac65d3703237d8ccf5698f693e5e9' + ':' + '1c58f8fcdd7c0f63f6e98f649e5365de').toString('base64')
-			})
-		})
-		.then(response => response.json())
-		.then(response => this.setState({
-			prices: response.data[0].close
-			})
-		)
-		.then(() => console.log(this.state.prices, 'state of prices'))
-	}
+		return fetch(`https://api.iextrading.com/1.0/stock/${ticker}/batch?types=quote,company,chart&range=1m&last=1`)
+			.then(response => response.json())
+			.then(response => this.setState({
+				prices: response.chart,
+				basicStockData: response.company
+				})
+			)
+		}
 
 	postStockData = () => {
-		var objToPost = {
+		let objToPost = {
 			ticker: this.state.ticker,
 			score: this.state.sentimentScore.score,
 			magnitude: this.state.sentimentScore.magnitude,
 			price: this.state.prices,
 			date: new Date
 		}
-		console.log(objToPost)
-		fetch('http://localhost:3000/stocks', {
+		return fetch('http://localhost:3000/stocks', {
 			method: 'POST',
 			credentials: 'include',
 			body:JSON.stringify(objToPost),
@@ -78,14 +56,13 @@ class TickerInput extends Component {
 			})
 		})
 		.then(resp => resp.json())
-		.then(resp => console.log(resp))
 		.then(() => this.killScreenAndRenderSavedCard())
 	}
 
 	submitTicker = e => {
 		e.preventDefault()
 		this.setState({tickerToPass: this.state.ticker, loading: true})
-		this.getBasicStockData(this.state.ticker)
+		this.getStockPriceData(this.state.ticker)
 
 		fetch('https://stockpickeremoji.herokuapp.com/' + this.state.ticker)
 			.then(resp => resp.json())
@@ -99,18 +76,16 @@ class TickerInput extends Component {
 	}
 
 	formatInput = e => {
-		var upperCased = e.target.value.toUpperCase()
+		let upperCased = e.target.value.toUpperCase()
 		this.setState({
 			ticker: upperCased
 		})
 	}
 
 	prepareHeadlineData = twitterResp => {
-		var newTitles = twitterResp.tweets.statuses
-			.map(story => {
+		let newTitles = twitterResp.tweets.statuses.map(story => {
 				return story.text
-			})
-			.join(' ')
+			}).join(' ')
 		this.setState({
 			sentimentDataToSend: {
 				content: newTitles,
@@ -126,7 +101,7 @@ class TickerInput extends Component {
 	}
 
 	sentimentAnalysis = data => {
-		Promise.all([
+		return Promise.all([
 			this.loadingAwait(), 
 			fetch('https://stockpickeremoji.herokuapp.com/', {
 			method: 'POST',
@@ -146,14 +121,7 @@ class TickerInput extends Component {
 		})
 	}
 
-	handleEmptyResponse = () => {
-		if (this.state.sentimentScore.magnitude === 0) {
-			alert('😓')
-		}
-	}
-
 	killScreenAndRenderSavedCard = () => {
-		console.log('killscreen')
 		this.setState({
 			showAll: false,
 			stockCardShow: true
@@ -161,34 +129,14 @@ class TickerInput extends Component {
 		return <StockCard />
 	}
 
-	responseContainer = () => {
-		return (
-			<div className='container-of-all'>
-					<div className='score-and-data-container'>
-
-						{this.state.showAll ? <TickerResponse sentimentScore={this.state.sentimentScore} /> : ''}
-
-
-						{this.state.showAll ? <TickerResponseBasicInfo basicStockData={this.state.basicStockData} price={this.state.prices} /> : ''}
-
-					</div>
-					<div className='data-chart'>
-						{this.state.showAll ? <Candlestick setPrices={this.setPrices} tickerToPass={this.state.tickerToPass} /> : ''}
-					</div>
-
-					{this.state.stockCardShow ? <StockCard price = {this.state.prices} sentimentScore={this.state.sentimentScore}/> : ''}
-
-					{this.state.showAll ? <button className='button-green' onClick={this.postStockData}>SAVE</button> : ''}
-
-				</div>
-		)
-	}
-
 	render() {
 		return (
 			<div className='input-response-container'>
 				<div className='input-form-container'>
-					<form className='input-form' type='submit' onSubmit={this.submitTicker}>
+					<form 
+						className='input-form' 
+						type='submit' 
+						onSubmit={this.submitTicker}>
 						<input
 							className='input-ticker'
 							placeholder='AMZN'
@@ -198,12 +146,26 @@ class TickerInput extends Component {
 							name='content'
 							onChange={event => {
 								this.formatInput(event)
-							}}
-						/>
-						<input className='submit-ticker' type='submit' value='G🤓!' />
+							}}/>
+						<input 
+							className='submit-ticker'
+							type='submit'
+							value='G🤓!'/>
 					</form>
 				</div>
-				{this.state.loading ? <Animation loading={true} height={300} width={300} loop={true}	/> : this.responseContainer()}
+				{this.state.loading 
+					? <Animation loading={true} height={300} width={300} loop={true} /> 
+					: <TickerResponseContainer 
+							sentimentScore={this.state.sentimentScore}
+							prices={this.state.prices}
+							postStockData={this.postStockData}
+							setPrices={this.props.setPrices}
+							tickerToPass={this.state.tickerToPass}
+							basicStockData={this.state.basicStockData}
+							sentimentScore={this.state.sentimentScore}
+							showAll={this.state.showAll}
+							stockCardShow={this.state.stockCardShow}
+							/>}
 			</div>
 		)
 	}

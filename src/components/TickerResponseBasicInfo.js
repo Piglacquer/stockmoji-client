@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import '../styles/css/TickerResponseBasicInfo.css'
 
 const TickerResponseBasicInfo = () => {
-  return(
+  return (
     <div className='stock-info-container'>
       <h1 className='stock-name'>{this.props.basicStockData.name}</h1>
       <div className='stock-basic-info-container'>
@@ -23,13 +23,12 @@ const TickerResponseBasicInfo = () => {
           </div>
           <h1 className='stock-price'>{this.props.price}</h1>
         </div>
-        </div>
-        <div className='stock-description-container'>
-          <p className='stock-description'>{this.props.basicStockData.long_description}</p>
-        </div>
+      </div>
+      <div className='stock-description-container'>
+        <p className='stock-description'>{this.props.basicStockData.long_description}</p>
+      </div>
     </div>
   )
 }
-
 
 export default TickerResponseBasicInfo
