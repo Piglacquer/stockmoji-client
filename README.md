@@ -1,5 +1,12 @@
 # Welcome to Stockm😏ji, a stock sentiment analysis application
 ![ezgif com-optimize](https://user-images.githubusercontent.com/32248824/38705058-885765aa-3e65-11e8-9d94-64648815d397.gif)
+___
+
+## Deprecated, API began charging 😈
+Check out [Stockmoji V2](https://github.com/Piglacquer/stockmoji-client-v2)
+___
+
+## Description
 
 The basis of this application comes from a few API calls that the user initiates when they enter a stock ticker, Google Cloud Language API, Twitter, and Intrinio. These get the user some data about the company they entered, including basic information about the company, price data from the last 100 days, the top 100 tweets regarding the ticker, and the sentiment score of those tweets.
 
